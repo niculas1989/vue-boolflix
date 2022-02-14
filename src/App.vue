@@ -1,9 +1,6 @@
 <template>
   <div id="general-wrapper">
-    <header>
-      <input type="text" v-model="query" />
-      <button @click="getApi">CLICCAMI</button>
-    </header>
+    <Header @get-api="getApi" />
     <main>
       <ul id="list">
         <h2>Film:</h2>
@@ -12,10 +9,10 @@
           <div>Original title originale: {{ film.original_title }}</div>
           <div>
             Original Language:
-            <span v-if="(original_language = 'en')"
+            <span v-if="film.original_language === 'en'"
               ><img src="./assets/img/en.png" alt="English Flag"
             /></span>
-            <span v-else-if="(original_language = 'it')"
+            <span v-else-if="film.original_language === 'it'"
               ><img src="./assets/img/it.png" alt="Italian Flag"
             /></span>
             <span v-else>{{ film.original_language }}</span>
@@ -28,10 +25,10 @@
           <div>Original title originale: {{ serie.name }}</div>
           <div>
             Original Language:
-            <span v-if="(original_language = 'en')"
+            <span v-if="serie.original_language === 'en'"
               ><img src="./assets/img/en.png" alt="English Flag"
             /></span>
-            <span v-else-if="(original_language = 'it')"
+            <span v-else-if="serie.original_language === 'it'"
               ><img src="./assets/img/it.png" alt="Italian Flag"
             /></span>
             <span v-else>{{ serie.original_language }}</span>
@@ -45,23 +42,24 @@
 
 <script>
 import axios from "axios";
+import Header from "./components/Header.vue";
 export default {
+  components: {
+    Header,
+  },
   data() {
     return {
       films: [],
       tvSeries: [],
       api_key: "90fa42f2bc227218b6f76248ac1d9928",
-      query: "",
-      english: "@assets/img/en.png",
-      italian: "@assets/img/it.png",
     };
   },
   methods: {
-    getApi() {
+    getApi(query) {
       const config = {
         params: {
           api_key: this.api_key,
-          query: this.query,
+          query: query,
           language: "it-IT",
         },
       };
@@ -83,4 +81,5 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/scss/style.scss";
 </style>
