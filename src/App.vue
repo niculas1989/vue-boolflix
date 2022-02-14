@@ -3,7 +3,9 @@
     <input type="text" v-model="query" />
     <button @click="getApi">CLICCAMI</button>
     <ul id="list">
-      <li>QUALCOSA ANDRA' QUI</li>
+      <li v-for="(film, index) in films" :key="index">
+        {{ film.original_title }}
+      </li>
     </ul>
   </div>
 </template>
@@ -15,7 +17,6 @@ export default {
     return {
       films: [],
       api_key: "90fa42f2bc227218b6f76248ac1d9928",
-      uri: "https://api.themoviedb.org/3/",
       query: "",
     };
   },
