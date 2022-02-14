@@ -1,7 +1,9 @@
 <template>
   <main>
+    <!-- Lista in cui generare TOT elementi -->
     <ul id="list">
       <h2 class="text-center">Film:</h2>
+      <!-- Lista per i FILM -->
       <li v-for="film in films" :key="film.id">
         <div>Title: {{ film.title }}</div>
         <div>Original title originale: {{ film.original_title }}</div>
@@ -17,6 +19,7 @@
         </div>
         <div>Vote Average: {{ film.vote_average }}</div>
       </li>
+      <!-- Lista per le SERIE TV -->
       <h2 class="text-center">TV Series:</h2>
       <li v-for="serie in tvSeries" :key="serie.id">
         <div>Title: {{ serie.name }}</div>

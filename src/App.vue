@@ -1,6 +1,9 @@
 <template>
+  <!-- Un wrapper generico in cui contenere i due componenti -->
   <div id="general-wrapper">
+    <!-- Header in cui effettuare la ricerca -->
     <Header @get-api="getApi" />
+    <!-- Main in cui svolgere estendere la chiamata API -->
     <Main :films="films" :tvSeries="tvSeries" />
   </div>
 </template>
