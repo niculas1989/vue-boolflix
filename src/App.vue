@@ -1,24 +1,28 @@
 <template>
-  <div>
-    <input type="text" v-model="query" />
-    <button @click="getApi">CLICCAMI</button>
-    <ul id="list">
-      <li v-for="(film, index) in films" :key="index">
-        <div>Title: {{ film.title }}</div>
-        <div>Original title originale: {{ film.original_title }}</div>
-        <div>
-          Original Language:
-          <span v-if="(original_language = 'en')"
-            ><img src="./assets/img/en.png" alt="English Flag"
-          /></span>
-          <span v-else-if="(original_language = 'it')"
-            ><img src="./assets/img/it.png" alt="Italian Flag"
-          /></span>
-          <span v-else>{{ film.original_language }}</span>
-        </div>
-        <div>Vote Average: {{ film.vote_average }}</div>
-      </li>
-    </ul>
+  <div id="general-wrapper">
+    <header>
+      <input type="text" v-model="query" />
+      <button @click="getApi">CLICCAMI</button>
+    </header>
+    <main>
+      <ul id="list">
+        <li v-for="(film, index) in films" :key="index">
+          <div>Title: {{ film.title }}</div>
+          <div>Original title originale: {{ film.original_title }}</div>
+          <div>
+            Original Language:
+            <span v-if="(original_language = 'en')"
+              ><img src="./assets/img/en.png" alt="English Flag"
+            /></span>
+            <span v-else-if="(original_language = 'it')"
+              ><img src="./assets/img/it.png" alt="Italian Flag"
+            /></span>
+            <span v-else>{{ film.original_language }}</span>
+          </div>
+          <div>Vote Average: {{ film.vote_average }}</div>
+        </li>
+      </ul>
+    </main>
   </div>
 </template>
 
