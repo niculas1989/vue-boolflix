@@ -62,11 +62,11 @@ export default {
 <style scoped lag="scss">
 main {
   background-color: #676767;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 }
 
 #title {
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
