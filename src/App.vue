@@ -9,7 +9,21 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      qualcosaVaQui: "",
+    };
+  },
+  methods: {
+    getApi() {
+      axios.get("URLVAQUI").then((res) => {
+        //!QUI FAREMO QUALCOSA
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
