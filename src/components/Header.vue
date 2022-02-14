@@ -6,7 +6,12 @@
           <h1>BOOLFLIX</h1>
         </div>
         <div>
-          <input placeholder="Cerca qui.." type="text" v-model="query" />
+          <input
+            placeholder="Cerca qui.."
+            type="text"
+            v-model="query"
+            @keyup.enter="$emit('get-api', query)"
+          />
           <button @click="$emit('get-api', query)">SEARCH</button>
         </div>
       </div>
