@@ -3,7 +3,7 @@
     <div class="container h-100">
       <div class="d-flex justify-content-between align-items-center h-100">
         <div id="logo">
-          <h1>BOOLFLIX</h1>
+          <h1 role="button">BOOLFLIX</h1>
         </div>
         <div>
           <input
