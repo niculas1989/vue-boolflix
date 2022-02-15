@@ -91,13 +91,13 @@ i {
   #posters {
     height: 513px;
     width: 342px;
-    border: 1px solid black;
+    border: 1px solid red;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px 2px #000000;
+    box-shadow: 0px 0px 10px 2px #d80909;
   }
   .hover-option {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     top: 0;
     right: 0;
     left: 0;
