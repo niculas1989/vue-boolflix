@@ -1,16 +1,12 @@
 <template>
-  <ul @mouseenter="hover = true" @mouseleave="hover = false">
-    <div v-if="hover">
+  <ul>
+    <div>
       <figure>
         <img :src="images" :alt="item.title" class="h-100 w-100" />
       </figure>
     </div>
 
-    <div
-      v-else
-      class="h-100 w-100 justify-content-center align-items-center"
-      :class="{ active: hover }"
-    >
+    <div class="h-100 w-100 justify-content-center align-items-center">
       <li>{{ item.title || item.name }}</li>
       <li>{{ item.original_title || item.original_name }}</li>
       <li>
@@ -18,12 +14,15 @@
         <span v-else>{{ item.original_language }}</span>
       </li>
       <li>
-        <i v-if="!stars" class="fa-light fa-star"></i>
         <i
-          v-else
           v-for="(star, index) in stars"
           :key="index"
           class="fa-solid fa-star"
+        ></i>
+        <i
+          v-for="(empyStar, index) in restOfStars"
+          :key="index"
+          class="fa-regular fa-star"
         ></i>
       </li>
     </div>
@@ -56,6 +55,9 @@ export default {
     },
     stars() {
       return Math.ceil(this.item.vote_average / 2);
+    },
+    restOfStars() {
+      return 5 - this.stars;
     },
   },
 };
