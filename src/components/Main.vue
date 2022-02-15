@@ -4,26 +4,22 @@
       <h2>CERCA FILM O SERIE TV</h2>
     </div>
     <!-- Lista in cui generare TOT elementi -->
-    <div v-else>
-      <ul id="list">
-        <!-- Lista per i FILM -->
-        <div class="container">
-          <h2 class="text-center" v-if="films.length">Film:</h2>
-          <div class="row">
-            <div class="col-3" v-for="film in films" :key="film.id">
-              <Poster :item="film" />
-            </div>
-          </div>
+    <div v-else class="container">
+      <!-- Lista per i FILM -->
+      <h2 class="text-center" v-if="films.length">Film:</h2>
+      <div class="row">
+        <div class="col-3" v-for="film in films" :key="film.id">
+          <Poster :item="film" />
         </div>
+      </div>
 
-        <!-- Lista per le SERIE TV -->
-        <h2 class="text-center" v-if="tvSeries.length">TV Series:</h2>
-        <div class="row">
-          <div class="col-3" v-for="serie in tvSeries" :key="serie.id">
-            <Poster :item="serie" />
-          </div>
+      <!-- Lista per le SERIE TV -->
+      <h2 class="text-center" v-if="tvSeries.length">TV Series:</h2>
+      <div class="row">
+        <div class="col-3" v-for="serie in tvSeries" :key="serie.id">
+          <Poster :item="serie" />
         </div>
-      </ul>
+      </div>
     </div>
   </main>
 </template>
