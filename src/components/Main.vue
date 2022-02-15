@@ -10,48 +10,17 @@
         <div class="container">
           <h2 class="text-center" v-if="films.length">Film:</h2>
           <div class="row">
-            <li v-for="film in films" :key="film.id" class="col-4 py-4">
-              <!-- <div class="py-2">Title: {{ film.title }}</div>
-              <div class="py-2">Original title: {{ film.original_title }}</div>
-              <div>
-                Original Language:
-                <span class="py-2" v-if="film.original_language === 'en'"
-                  ><img src="../assets/img/en.png" alt="English Flag"
-                /></span>
-                <span class="py-2" v-else-if="film.original_language === 'it'"
-                  ><img src="../assets/img/it.png" alt="Italian Flag"
-                /></span>
-                <span class="py-2" v-else>{{ film.original_language }}</span>
-              </div>
-              <div class="py-2">Vote Average: {{ film.vote_average }}</div> -->
-              <figure>
-                <img
-                  :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`"
-                  :alt="film.title"
-                  class="h-100"
-                />
-              </figure>
-            </li>
+            <div class="col-3" v-for="film in films" :key="film.id">
+              <Poster :item="film" />
+            </div>
           </div>
+        </div>
 
-          <!-- Lista per le SERIE TV -->
-          <h2 class="text-center" v-if="tvSeries.length">TV Series:</h2>
-          <div class="row">
-            <li v-for="serie in tvSeries" :key="serie.id" class="col-4 py-4">
-              <div class="py-2">Title: {{ serie.name }}</div>
-              <div class="py-2">Original title: {{ serie.name }}</div>
-              <div>
-                Original Language:
-                <span class="py-2" v-if="serie.original_language === 'en'"
-                  ><img src="../assets/img/en.png" alt="English Flag"
-                /></span>
-                <span class="py-2" v-else-if="serie.original_language === 'it'"
-                  ><img src="../assets/img/it.png" alt="Italian Flag"
-                /></span>
-                <span class="py-2" v-else>{{ serie.original_language }}</span>
-              </div>
-              <div class="py-2">Vote Average: {{ serie.vote_average }}</div>
-            </li>
+        <!-- Lista per le SERIE TV -->
+        <h2 class="text-center" v-if="tvSeries.length">TV Series:</h2>
+        <div class="row">
+          <div class="col-3" v-for="serie in tvSeries" :key="serie.id">
+            <Poster :item="serie" />
           </div>
         </div>
       </ul>
@@ -60,8 +29,12 @@
 </template>
 
 <script>
+import Poster from "./Poster.vue";
 export default {
   name: "Main",
+  components: {
+    Poster,
+  },
   props: ["films", "tvSeries"],
 };
 </script>
