@@ -26,6 +26,11 @@ export default {
   },
   methods: {
     getApi(query) {
+      if (!query) {
+        this.films = [];
+        this.tvSeries = [];
+        return;
+      }
       const config = {
         params: {
           api_key: this.api_key,
