@@ -1,8 +1,8 @@
 <template>
-  <ul>
-    <div>
+  <ul id="cards">
+    <div class="">
       <figure>
-        <img :src="images" :alt="item.title" class="h-100 w-100" />
+        <img id="posters" :src="images" :alt="item.title" class="h-100 w-100" />
       </figure>
     </div>
 
@@ -37,6 +37,7 @@ export default {
     return {
       flags: ["it", "en"],
       hover: "false",
+      totalStars: 5,
     };
   },
   computed: {
@@ -57,7 +58,7 @@ export default {
       return Math.ceil(this.item.vote_average / 2);
     },
     restOfStars() {
-      return 5 - this.stars;
+      return this.totalStars - this.stars;
     },
   },
 };
@@ -72,4 +73,21 @@ ul li {
   background-color: #000;
   height: 100%;
 }
+
+i {
+  color: yellow;
+}
+
+#posters {
+  height: 513px;
+  width: 342px;
+}
+
+#cards {
+  height: 513px;
+  width: 342px;
+}
+
+//! dimensioni immagini
+// # ALTEZZA = 513 WIDTH = 342
 </style>
