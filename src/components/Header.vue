@@ -9,7 +9,7 @@
           <input
             placeholder="Cerca qui.."
             type="text"
-            v-model="query"
+            v-model.trim="query"
             @keyup.enter="$emit('get-api', query)"
           />
           <button @click="$emit('get-api', query)">SEARCH</button>

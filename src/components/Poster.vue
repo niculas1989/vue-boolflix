@@ -7,7 +7,7 @@
       @mouseenter="hover = true"
     />
 
-    <div class="hover-option" @mouseleave="hover = false" v-if="hover">
+    <div class="hover-option py-3" @mouseleave="hover = false" v-if="hover">
       <li>{{ item.title || item.name }}</li>
       <li>{{ item.original_title || item.original_name }}</li>
       <li>
@@ -88,25 +88,28 @@ i {
 
 .card-wrapper {
   position: relative;
-  #posters {
-    height: 513px;
-    width: 342px;
-    border: 1px solid red;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px 2px #d80909;
-  }
-  .hover-option {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(#000, 0.9);
-    border-radius: 30px;
-    height: 513px;
-    width: 342px;
-    overflow-y: auto;
-  }
+  height: 513px;
+  width: 342px;
+}
+#posters {
+  height: 513px;
+  width: 342px;
+  border: 1px solid red;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 2px #d80909;
+}
+.hover-option {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  border-radius: 30px;
+  height: 513px;
+  width: 342px;
+  overflow-y: auto;
+  transform: translateX(10%);
 }
 </style>

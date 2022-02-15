@@ -8,7 +8,11 @@
       <!-- Lista per i FILM -->
       <h2 class="text-center" v-if="films.length">Film:</h2>
       <div class="row">
-        <div class="col-4 py-3" v-for="film in films" :key="film.id">
+        <div
+          class="col col-md-6 col-lg-4 py-3"
+          v-for="film in films"
+          :key="film.id"
+        >
           <Poster :item="film" />
         </div>
       </div>
@@ -16,7 +20,11 @@
       <!-- Lista per le SERIE TV -->
       <h2 class="text-center" v-if="tvSeries.length">TV Series:</h2>
       <div class="row">
-        <div class="col-4 py-3" v-for="serie in tvSeries" :key="serie.id">
+        <div
+          class="col col-md-6 col-lg-4 py-3"
+          v-for="serie in tvSeries"
+          :key="serie.id"
+        >
           <Poster :item="serie" />
         </div>
       </div>
