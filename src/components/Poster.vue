@@ -1,16 +1,17 @@
 <template>
-  <ul id="cards">
-    <div class="">
-      <figure>
-        <img id="posters" :src="images" :alt="item.title" class="h-100 w-100" />
-      </figure>
-    </div>
+  <ul class="card-wrapper">
+    <img
+      id="posters"
+      :src="images"
+      :alt="item.title"
+      @mouseenter="hover = true"
+    />
 
-    <div class="h-100 w-100 justify-content-center align-items-center">
+    <div class="hover-option" @mouseleave="hover = false" v-if="hover">
       <li>{{ item.title || item.name }}</li>
       <li>{{ item.original_title || item.original_name }}</li>
       <li>
-        <img v-if="hasFlags" :src="flagSrc" alt="Language Flag" class="w-75" />
+        <img v-if="hasFlags" :src="flagSrc" alt="Language Flag" class="flags" />
         <span v-else>{{ item.original_language }}</span>
       </li>
       <li>
@@ -25,6 +26,12 @@
           class="fa-regular fa-star"
         ></i>
       </li>
+      <li>
+        <p>
+          <strong>Trama: </strong
+          ><em> {{ item.overview || "Non Disponibile" }}</em>
+        </p>
+      </li>
     </div>
   </ul>
 </template>
@@ -36,7 +43,7 @@ export default {
   data() {
     return {
       flags: ["it", "en"],
-      hover: "false",
+      hover: false,
       totalStars: 5,
     };
   },
@@ -65,29 +72,41 @@ export default {
 </script>
 
 <style scoped lang="scss">
-ul li {
-  list-style-type: none;
+.flags {
+  height: 25px;
+  width: 40px;
 }
 
-.active {
-  background-color: #000;
-  height: 100%;
+li {
+  list-style-type: none;
+  color: white;
 }
 
 i {
-  color: yellow;
+  color: #ffbd00;
 }
 
-#posters {
-  height: 513px;
-  width: 342px;
+.card-wrapper {
+  position: relative;
+  #posters {
+    height: 513px;
+    width: 342px;
+    border: 1px solid black;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 2px #000000;
+  }
+  .hover-option {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(#000, 0.9);
+    border-radius: 30px;
+    height: 513px;
+    width: 342px;
+    overflow-y: auto;
+  }
 }
-
-#cards {
-  height: 513px;
-  width: 342px;
-}
-
-//! dimensioni immagini
-// # ALTEZZA = 513 WIDTH = 342
 </style>
