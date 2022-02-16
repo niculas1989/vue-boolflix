@@ -32,6 +32,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+input {
+  color: red;
+  font-weight: 900;
+}
+button {
+  background-color: darkred;
+  color: white;
+}
+
 header {
   height: 80px;
   background-color: #000;

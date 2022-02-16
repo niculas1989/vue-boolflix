@@ -47,6 +47,15 @@ export default {
 main {
   background-color: #676767;
   min-height: calc(100vh - 80px);
+  animation: color-change-2x 6s linear infinite alternate both;
+}
+@keyframes color-change-2x {
+  0% {
+    background: red;
+  }
+  100% {
+    background: #676767;
+  }
 }
 
 #title {
