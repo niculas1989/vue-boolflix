@@ -72,7 +72,9 @@ export default {
         };
 
         axios.get(baseUri + this.item.id + endUri, config).then((res) => {
-          this.castList = res.data.cast;
+          do {
+            this.castList = res.data.cast;
+          } while (res.data.cast.order <= 4);
         });
       }
     },
