@@ -32,11 +32,22 @@
           ><em> {{ item.overview || "Non Disponibile" }}</em>
         </p>
       </li>
+      <li>
+        <strong>Cast: </strong>
+        <em
+          v-for="(cast, index) in castList"
+          :key="index"
+          class="d-flex flex-column"
+          >{{ cast.name }}</em
+        >
+      </li>
     </div>
   </ul>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Poster",
   props: ["item"],
@@ -45,7 +56,30 @@ export default {
       flags: ["it", "en"],
       hover: false,
       totalStars: 5,
+      castList: [],
+      apiCast: {
+        api_key: "90fa42f2bc227218b6f76248ac1d9928",
+        baseUri: "https://api.themoviedb.org/3/movie/",
+        endUri: "/credits",
+      },
     };
+  },
+  methods: {
+    fetchApiCredits() {
+      if (this.item) {
+        const { api_key, baseUri, endUri } = this.apiCast;
+        const config = {
+          params: {
+            api_key,
+            language: "it-IT",
+          },
+        };
+
+        axios.get(baseUri + this.item.id + endUri, config).then((res) => {
+          this.castList = res.data.cast;
+        });
+      }
+    },
   },
   computed: {
     images() {
@@ -67,6 +101,9 @@ export default {
     restOfStars() {
       return this.totalStars - this.stars;
     },
+  },
+  mounted() {
+    this.fetchApiCredits();
   },
 };
 </script>
