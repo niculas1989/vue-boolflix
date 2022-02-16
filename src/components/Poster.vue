@@ -18,12 +18,12 @@
         <i
           v-for="(star, index) in stars"
           :key="index"
-          class="fa-solid fa-star"
+          class="fa-solid fa-star fa-lg"
         ></i>
         <i
           v-for="(empyStar, index) in restOfStars"
           :key="index"
-          class="fa-regular fa-star"
+          class="fa-regular fa-star fa-lg"
         ></i>
       </li>
       <li>
@@ -55,15 +55,16 @@ export default {
       castList: [],
       apiCast: {
         api_key: "90fa42f2bc227218b6f76248ac1d9928",
-        baseUri: "https://api.themoviedb.org/3/movie/",
-        endUri: "/credits",
+        baseOfUri: "https://api.themoviedb.org/3/movie/",
+        endOfUri: "/credits",
       },
     };
   },
   methods: {
     fetchApiCredits() {
       if (this.item) {
-        const { api_key, baseUri, endUri } = this.apiCast;
+        const { api_key, baseOfUri, endOfUri } = this.apiCast;
+
         const config = {
           params: {
             api_key,
@@ -71,10 +72,8 @@ export default {
           },
         };
 
-        axios.get(baseUri + this.item.id + endUri, config).then((res) => {
-          do {
-            this.castList = res.data.cast;
-          } while (res.data.cast.order <= 4);
+        axios.get(baseOfUri + this.item.id + endOfUri, config).then((res) => {
+          this.castList = res.data.cast;
         });
       }
     },
@@ -119,6 +118,10 @@ li {
 
 i {
   color: #ffbd00;
+}
+.fa-star.fa-regular:hover {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 600;
 }
 
 .card-wrapper {
