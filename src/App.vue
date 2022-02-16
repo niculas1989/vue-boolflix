@@ -39,16 +39,17 @@ export default {
         },
       };
 
+      this.fetchApi("search/movie", config, "films");
+      this.fetchApi("search/tv", config, "tvSeries");
+    },
+    fetchApi(endpoint, config, target) {
       axios
-        .get("https://api.themoviedb.org/3/search/movie", config)
+        .get(`https://api.themoviedb.org/3/${endpoint}`, config)
         .then((res) => {
-          this.films = res.data.results;
-        });
-
-      axios
-        .get("https://api.themoviedb.org/3/search/tv", config)
-        .then((res) => {
-          this.tvSeries = res.data.results;
+          this[target] = res.data.results;
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
