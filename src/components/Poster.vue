@@ -32,25 +32,21 @@
           ><em> {{ item.overview || "Non Disponibile" }}</em>
         </p>
       </li>
-      <li>
-        <strong>Cast: </strong>
-        <em
-          v-for="(cast, index) in castList"
-          :key="index"
-          class="d-flex flex-column"
-          >{{ cast.name }}</em
-        >
-      </li>
+      <Cast :item="castList" />
     </div>
   </ul>
 </template>
 
 <script>
 import axios from "axios";
+import Cast from "./Cast.vue";
 
 export default {
   name: "Poster",
   props: ["item"],
+  components: {
+    Cast,
+  },
   data() {
     return {
       flags: ["it", "en"],
